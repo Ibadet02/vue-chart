@@ -9,11 +9,12 @@ export default {
     name: 'Bank2',
     data(){
         return {
+            // #0083FF
             label: this.labelA,
             numberA: this.dataA.map(el=>el[el.length-1]),
             date: this.dataA.map(el=>el[4]),
             radioA: [...new Set(this.dataA.map(el=>el[3]))],
-            colors: ['#FF2D00','#FFE400','#78FF00','#00FF64','#00FFDC','#0083FF','#0800FF','#FF00E8']
+            colors: ['#FF0000','#0083FF','#FFFF00','#00FF64','#00FFDC','#00FF00','#0800FF','#FF00E8']
         }
     },
     props: ['labelA','dataA'],

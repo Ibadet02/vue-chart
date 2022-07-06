@@ -4,8 +4,6 @@
 </template>
 
 <script>
-import server from './data'
-import Vue from "vue"
 import Chart from 'chart.js/auto';
 export default {
   name: 'Bank1',
@@ -18,12 +16,11 @@ export default {
       numberK: this.dataK.map(el=>el[el.length-1]),
       date: this.dataK.map(el=>el[4]),
       radioK: [...new Set(this.dataK.map(el=>el[3]))],
-      colors: ['#FF0000','#FFFF00','#00FF00','##BA4A00']
+      colors: ['#FF0000','#FFFF00','#00FF00','#0800FF']
     }
   },
   props: ['labelK','dataK'],
   mounted() {
-    console.log(server)
     const ctx = document.getElementById('myChart');
     const labels = this.labels;
     const data = {
