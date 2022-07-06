@@ -49,9 +49,6 @@ export default {
 </script>
 
 <style scoped>
-    canvas{
-      width: 100%;
-    }
     h2{
       text-align: center;
     }
