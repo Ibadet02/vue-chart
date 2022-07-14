@@ -1,10 +1,12 @@
 <template>
 <div :class="'container'">
     <Bank1
-    :dataK="dataK"
+    :server="server"
     :labelK="labels[0]"
+    :date="date"
     />
     <Bank2
+    :server="server"
     :dataA="dataA"
     :labelA="labels[1]"
     />
@@ -23,11 +25,12 @@ export default {
     components: { Bank1, Bank2 },
     data() {
         return {
-            dataK: server.filter(el=>el[0]===331).map(el=>el),
-            dataA: server.filter(el=>el[0]===367).map(el=>el),
+            date: server.map((el, index)=>el[4]),
+            server: server,
+            dataA: server.filter((el, index)=>el[0]===367),
             labels: ['Kapital', 'ABB'],
             radioK: [],
-            radioA: []
+            radioA: [],
         }
     },
 }

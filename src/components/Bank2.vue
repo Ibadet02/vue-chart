@@ -1,5 +1,5 @@
 <template>
-    <h2>{{labelA}}</h2>
+    <h2>Name</h2>
     <canvas id="myChart2" width="100%"></canvas>
 </template>
 
@@ -12,28 +12,23 @@ export default {
             // #0083FF
             label: this.labelA,
             numberA: this.dataA.map(el=>el[el.length-1]),
-            date: this.dataA.map(el=>el[4]),
+            bankNames: this.server.map(el=>el[1]),
             radioA: [...new Set(this.dataA.map(el=>el[3]))],
             colors: ['#FF0000','#0083FF','#FFFF00','#00FF64','#00FFDC','#00FF00','#0800FF','#FF00E8']
         }
     },
-    props: ['labelA','dataA'],
+    props: ['labelA','dataA','server'],
     mounted() {
     const ctx = document.getElementById('myChart2');
     const labels = this.labels;
     const data = {
-      labels: this.date,
-      datasets: this.radioA.map((el,index)=>{
-        let spaceFromLeft = []
-        this.dataA.every(e=>e[3] === el ? false : spaceFromLeft.push('x'))
-        return {
-            label: el,
-            data: [...Array(spaceFromLeft.length).fill(null),...this.dataA.filter(e=>e[3] === el).map(e=>e[e.length-1])],
+      labels: this.bankNames,
+      datasets: [{
+            label: 'By name',
+            data: [...this.server.map(el=>el[el.length-1])],
             fill: false,
-            borderColor: this.colors[index],
             tension: 0.1
-        }
-      })
+        }]
     };
     const myChart = new Chart(ctx, {
     type: 'line',
